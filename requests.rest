@@ -1,0 +1,95 @@
+# Base URL
+@baseUrl = http://localhost:5000/api
+@token = <your_access_token_here>  # Replace this with the actual token
+
+# 1. Register a new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "user",
+  "email": "user@gmail.com",
+  "password": "123456"
+}
+
+### 2. Login a user
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@gmail.com",
+  "password": "123456"
+}
+
+### 3. Get all journals (Authenticated)
+GET {{baseUrl}}/journals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Yjk0ZDg0MjEyYzgzNjFmN2YwMjExZiIsImlhdCI6MTcyMzQyMDAzNiwiZXhwIjoxNzI2MDEyMDM2fQ.XRVy0XBrI7vC1rMAC0VCH-kNPAmwmhpiut1JdH4AcY8
+
+### 4. Create a new journal (Authenticated)
+POST {{baseUrl}}/journals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Yjk0ZDg0MjEyYzgzNjFmN2YwMjExZiIsImlhdCI6MTcyMzQyMDAzNiwiZXhwIjoxNzI2MDEyMDM2fQ.XRVy0XBrI7vC1rMAC0VCH-kNPAmwmhpiut1JdH4AcY8
+Content-Type: application/json
+
+{
+  "title": "New Journal",
+  "description": "A new journal description"
+}
+
+### 5. Get a specific journal by ID (Authenticated)
+# Replace {journalId} with the actual journal ID from the response of the previous request
+GET {{baseUrl}}/journals/{journalId}
+Authorization: Bearer {{token}}
+
+### 6. Update a journal by ID (Authenticated)
+# Replace {journalId} with the actual journal ID
+PUT {{baseUrl}}/journals/{journalId}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Updated Journal Title",
+  "description": "Updated description for the journal."
+}
+
+### 7. Delete a journal by ID (Authenticated)
+# Replace {journalId} with the actual journal ID
+DELETE {{baseUrl}}/journals/{journalId}
+Authorization: Bearer {{token}}
+
+### 8. Create a new entry in a specific journal (Authenticated)
+# Replace {journalId} with the actual journal ID
+POST {{baseUrl}}/entries
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Morning Thoughts",
+  "content": "Today, I reflected on the importance of mindfulness.",
+  "journal": "{journalId}"
+}
+
+### 9. Get all entries for a specific journal (Authenticated)
+# Replace {journalId} with the actual journal ID
+GET {{baseUrl}}/entries/journal/{journalId}
+Authorization: Bearer {{token}}
+
+### 10. Get a specific entry by ID (Authenticated)
+# Replace {entryId} with the actual entry ID from the response of the previous request
+GET {{baseUrl}}/entries/{entryId}
+Authorization: Bearer {{token}}
+
+### 11. Update an entry by ID (Authenticated)
+# Replace {entryId} with the actual entry ID
+PUT {{baseUrl}}/entries/{entryId}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Updated Entry Title",
+  "content": "Updated content for the journal entry."
+}
+
+### 12. Delete an entry by ID (Authenticated)
+# Replace {entryId} with the actual entry ID
+DELETE {{baseUrl}}/entries/{entryId}
+Authorization: Bearer {{token}}
