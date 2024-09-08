@@ -17,28 +17,28 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "user@gmail.com",
+  "email": "user1@example.com",
   "password": "123456"
 }
 
 ### 3. Get all journals (Authenticated)
 GET {{baseUrl}}/journals
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Yjk0ZDg0MjEyYzgzNjFmN2YwMjExZiIsImlhdCI6MTcyMzQyMDAzNiwiZXhwIjoxNzI2MDEyMDM2fQ.XRVy0XBrI7vC1rMAC0VCH-kNPAmwmhpiut1JdH4AcY8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
 
 ### 4. Create a new journal (Authenticated)
 POST {{baseUrl}}/journals
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Yjk0ZDg0MjEyYzgzNjFmN2YwMjExZiIsImlhdCI6MTcyMzQyMDAzNiwiZXhwIjoxNzI2MDEyMDM2fQ.XRVy0XBrI7vC1rMAC0VCH-kNPAmwmhpiut1JdH4AcY8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
 Content-Type: application/json
 
 {
-  "title": "New Journal",
+  "title": "Joe's Journal",
   "description": "A new journal description"
 }
 
 ### 5. Get a specific journal by ID (Authenticated)
 # Replace {journalId} with the actual journal ID from the response of the previous request
 GET {{baseUrl}}/journals/{journalId}
-Authorization: Bearer {{token}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
 
 ### 6. Update a journal by ID (Authenticated)
 # Replace {journalId} with the actual journal ID
@@ -59,13 +59,13 @@ Authorization: Bearer {{token}}
 ### 8. Create a new entry in a specific journal (Authenticated)
 # Replace {journalId} with the actual journal ID
 POST {{baseUrl}}/entries
-Authorization: Bearer {{token}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
 Content-Type: application/json
 
 {
-  "title": "Morning Thoughts",
+  "title": "Evening thoughts",
   "content": "Today, I reflected on the importance of mindfulness.",
-  "journal": "{journalId}"
+  "journal": "66dda741fa28c81a6cc795c5"
 }
 
 ### 9. Get all entries for a specific journal (Authenticated)
