@@ -70,11 +70,12 @@ exports.updateEntry = async (req, res) => {
 exports.deleteEntry = async (req, res) => {
   try {
     const entry = await Entry.findById(req.params.id).populate('journal');
+    console.log(entry)
     if (!entry || entry.journal.user.toString() !== req.user._id.toString()) {
       throw new Error('Entry not found or you do not have access');
     }
 
-    await entry.remove();
+    await entry.deleteOne();
     res.json({ message: 'Entry deleted' });
   } catch (error) {
     res.status(404).json({ message: error.message });
