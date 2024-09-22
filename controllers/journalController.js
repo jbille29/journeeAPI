@@ -1,4 +1,5 @@
 const Journal = require('../models/Journal');
+const Entry = require('../models/Entry');     // Import the Entry model
 
 // @desc    Create a new journal
 // @route   POST /api/journals
@@ -63,12 +64,20 @@ exports.updateJournal = async (req, res) => {
 // @access  Private
 exports.deleteJournal = async (req, res) => {
   try {
+    // First, find and delete the journal
     const deletedJournal = await Journal.findOneAndDelete({
       _id: req.params.id,
       user: req.user._id,
     });
+
+    // If the journal is not found or does not belong to the user, throw an error
     if (!deletedJournal) throw new Error('Journal not found or you do not have access');
-    res.json({ message: 'Journal deleted' });
+
+    // After deleting the journal, delete all entries associated with it
+    await Entry.deleteMany({ journal: deletedJournal._id });
+  
+    if (!deletedJournal) throw new Error('Journal not found or you do not have access');
+    res.json({ message: 'Journal and its entries deleted successfully' });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

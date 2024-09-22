@@ -9,7 +9,11 @@ const EntrySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
     type: Date,
     default: Date.now,
   },

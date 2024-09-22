@@ -8,7 +8,7 @@ Content-Type: application/json
 
 {
   "username": "user",
-  "email": "user@gmail.com",
+  "email": "u@gmail.com",
   "password": "123456"
 }
 
@@ -17,7 +17,7 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "user1@example.com",
+  "email": "jb@gmail.com",
   "password": "123456"
 }
 
@@ -27,11 +27,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwN
 
 ### 4. Create a new journal (Authenticated)
 POST {{baseUrl}}/journals
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTMxYjAxMTE0OWY4ZjlmMjVkMmZhNyIsImlhdCI6MTcyNzAxNjA5NCwiZXhwIjoxNzI5NjA4MDk0fQ.1MlHA0CK9BdpS95llHYY93yAEuOJYKQc6ZCtcNtqomQ
 Content-Type: application/json
 
 {
-  "title": "Joe's Journal",
+  "title": "JB new Journal",
   "description": "A new journal description"
 }
 
@@ -53,19 +53,19 @@ Content-Type: application/json
 
 ### 7. Delete a journal by ID (Authenticated)
 # Replace {journalId} with the actual journal ID
-DELETE {{baseUrl}}/journals/{journalId}
-Authorization: Bearer {{token}}
+DELETE {{baseUrl}}/journals/66f02cc1cb3bd5daf518d4d5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTMxYjAxMTE0OWY4ZjlmMjVkMmZhNyIsImlhdCI6MTcyNzAxNjA5NCwiZXhwIjoxNzI5NjA4MDk0fQ.1MlHA0CK9BdpS95llHYY93yAEuOJYKQc6ZCtcNtqomQ
 
 ### 8. Create a new entry in a specific journal (Authenticated)
 # Replace {journalId} with the actual journal ID
 POST {{baseUrl}}/entries
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTMxYjAxMTE0OWY4ZjlmMjVkMmZhNyIsImlhdCI6MTcyNzAxNjA5NCwiZXhwIjoxNzI5NjA4MDk0fQ.1MlHA0CK9BdpS95llHYY93yAEuOJYKQc6ZCtcNtqomQ
 Content-Type: application/json
 
 {
-  "title": "Evening thoughts",
+  "title": "JB's enveing thoughts",
   "content": "Today, I reflected on the importance of mindfulness.",
-  "journal": "66dda741fa28c81a6cc795c5"
+  "journal": "66f02cc1cb3bd5daf518d4d5"
 }
 
 ### 9. Get all entries for a specific journal (Authenticated)
