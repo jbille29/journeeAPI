@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Load the public key from the environment variable (or from a file if you're using key files)
+const publicKey = process.env.JWT_PUBLIC_KEY.replace(/\\n/g, '\n');
+
 const protect = async (req, res, next) => {
   let token;
 
@@ -10,7 +13,7 @@ const protect = async (req, res, next) => {
   ) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, publicKey, { algorithms: ['RS256'] });
       req.user = await User.findById(decoded.id).select('-password');
       next();
     } catch (error) {

@@ -1,13 +1,17 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Load the private key from the environment variable (or from a file if you're using key files)
+const privateKey = process.env.JWT_PRIVATE_KEY.replace(/\\n/g, '\n');
+
 // Generate JWT
 const generateToken = (user) => {
-  console.log(process.env.JWT_SECRET)
-  return jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id: user._id }, privateKey, {
+    algorithm: 'RS256', // Use RS256 to sign the token with the private key
     expiresIn: '30d',
   });
 };
+
 
 // @desc    Register a new user
 // @route   POST /api/auth/register
