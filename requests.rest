@@ -1,6 +1,6 @@
 # Base URL
 @baseUrl = http://localhost:5000/api
-@token = <your_access_token_here>  # Replace this with the actual token
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTMxYjAxMTE0OWY4ZjlmMjVkMmZhNyIsImlhdCI6MTcyNzEzMjUwMSwiZXhwIjoxNzI5NzI0NTAxfQ.w0sTqwEh7xq7anXWzJ8CddS28GNg981mM_QhxcQ0SOY  # Replace this with the actual token
 
 # 1. Register a new user
 POST {{baseUrl}}/auth/register
@@ -23,7 +23,7 @@ Content-Type: application/json
 
 ### 3. Get all journals (Authenticated)
 GET {{baseUrl}}/journals
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2ZjMjIwNzE3MTkyNjUwMGNmYjVjNiIsImlhdCI6MTcyNTgwMTk5NywiZXhwIjoxNzI4MzkzOTk3fQ.QkRSV_-8dV2hKuyrrl9HGcvPDPN6rPuMHlHjCW69-NI
+Authorization: Bearer {{token}}
 
 ### 4. Create a new journal (Authenticated)
 POST {{baseUrl}}/journals
